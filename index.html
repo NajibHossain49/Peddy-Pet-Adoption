@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peddy - Pet Adoption Platform</title>
+    <!-- TailwindCss CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Remix-icon CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        body {
+            scroll-behavior: smooth;
+        }
+    </style>
+
+</head>
+
+<body class="">
+
+    <header>
+
+        <!-- Navbar -->
+        <nav class="bg-white p-4">
+            <div class="container mx-auto flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <img src="images/logo.webp" alt="Peddy Icon" class="w-6 h-5">
+                    <span class="text-xl font-bold text-gray-800 ml-2">Peddy</span>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:flex space-x-6">
+                    <a href="" class="text-gray-700 hover:text-gray-900">Home</a>
+                    <a href="" class="text-gray-700 hover:text-gray-900">Shop</a>
+                    <a href="" class="text-gray-700 hover:text-gray-900">Contact</a>
+                </div>
+
+                <!-- User Icon (hidden on small devices) -->
+                <div class="hidden md:flex items-center">
+                    <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
+                        <i class="ri-user-fill text-white text-xl"></i>
+                    </div>
+                </div>
+
+                <!-- Hamburger Icon (visible on small devices) -->
+                <div class="md:hidden">
+                    <button>
+                        <i class="ri-menu-line text-2xl text-gray-700"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+    <!-- Banner Section -->
+    <section class="text-center py-16">
+        <!-- Text below nav links -->
+        <p class="text-lg font-semibold text-gray-500 mt-6">
+            Bringing Families Together ❤️‍🔥
+        </p>
+
+        <!-- Hero content -->
+        <div class="container mx-auto mt-8">
+            <!-- Heading -->
+            <h1 class="text-4xl font-bold text-gray-900">
+                Your Path to Adoption <br> Starts Here
+            </h1>
+            <!-- Short description -->
+            <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
+                Start your journey to pet adoption today and discover a loyal companion ready to bring joy to your
+                life. Give a loving home to a furry friend in need and create lasting memories together!
+            </p>
+            <!-- View More Button -->
+            <div class="text-center mt-8">
+                <a href="#adopt-your-best-friend"
+                    class="mt-6 inline-block px-6 py-2 bg-[#0E7A81] text-white rounded-md hover:bg-[#0E7A81]">
+                    View More
+                </a>
+            </div>
+            <!-- Banner Image -->
+            <div class="mt-8">
+                <img src="images/pet.webp" alt="Adoption Image" class="mx-auto rounded-lg">
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Adopt Your Best Friend Section -->
+    <section id="adopt-your-best-friend" class="text-center py-16">
+        <!-- Caption -->
+        <h2 class="text-3xl font-bold text-gray-900">
+            Adopt Your Best Friend
+        </h2>
+        <!-- Description -->
+        <p class="mt-4 text-gray-600 max-w-xl mx-auto">
+            Adopt your best friend today and unlock a world of love and companionship. Give a deserving pet a forever
+            home and create memories that will last a lifetime!
+        </p>
+
+        <!-- Dynamic Categories Buttons (Will be populated via JS) -->
+        <div id="category-buttons"
+            class="flex flex-col sm:flex-row justify-center sm:space-x-4 space-y-4 sm:space-y-0 p-4 w-full mt-4">
+
+            <!-- Buttons will be append here -->
+        </div>
+
+        <!-- Loading Spinner -->
+        <div id="spinner" style="display: none;" class="flex justify-center items-center fixed inset-0 w-full h-full">
+            <div class="w-12 h-12 border-4 border-t-transparent border-blue-500 rounded-full animate-spin"></div>
+        </div>
+
+
+        <!-- Best Deal and Sort by Price Section -->
+        <div class="flex flex-col md:flex-row justify-between items-center mt-10 px-4 md:px-32">
+            <!-- Left-side text -->
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 md:mb-0">
+                Best Deal For You
+            </h2>
+
+            <!-- Right-side "Sort by Price" button -->
+            <button id="sort-btn"
+                class="bg-[#0E7A81] text-white px-4 py-2 rounded-md transition-colors hover:bg-[#0B5B5C]">
+                Sort by Price
+            </button>
+
+        </div>
+
+        <!-- Function Fetch of All Pets on Page Load (Will be populated via JS) -->
+        <div class="flex flex-col md:flex-row mt-7">
+            <!-- Left Side: 3 Card Layout (Responsive) -->
+            <div id="pets-container" class="w-full md:w-3/4 p-4 bg-white">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                    <div class="p-4 rounded">
+                        <!-- dynamically Card 1 will appear here -->
+
+                    </div>
+
+
+                    <div class="p-4 rounded">
+                        <!-- dynamically Card 2 will appear here -->
+
+                    </div>
+
+
+                    <div class="p-4 rounded">
+                        <!-- dynamically Card 3 will appear here -->
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: 2-Column Layout for Small Images with limited height -->
+            <div id="liked-pets-container"
+                class="w-full md:w-1/4 p-4 grid grid-cols-2 gap-2 overflow-y-auto mt-2 border-2 border-gray-200 rounded-md"
+                style="max-height: 400px;">
+
+                <div class="rounded overflow-hidden">
+                    <!-- Liked Pet Image 1 -->
+                </div>
+
+                <div class="rounded overflow-hidden">
+                    <!-- Liked Pet Image 2 -->
+                </div>
+
+                <div class="rounded overflow-hidden">
+                    <!-- Liked Pet Image 3 -->
+                </div>
+
+                <div class="rounded overflow-hidden">
+                    <!-- Liked Pet Image 4 -->
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- Adopt Your Best Friend Section Ends Here -->
+
+    <!-- Modal Structure For Show pet's Details -->
+    <div id="pet-details-modal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
+        style="display: none;">
+        <div id="modal-content" class="bg-white p-6 rounded-lg w-full sm:w-3/4 md:w-1/2 lg:w-1/3 max-w-2xl">
+            <!-- Modal content will be injected here dynamically -->
+        </div>
+    </div>
+
+    <!-- Countdown Modal -->
+    <div id="countdown-modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+        <div
+            class="bg-white p-6 sm:p-8 rounded-lg text-center shadow-lg flex flex-col justify-center items-center w-11/12 sm:w-3/4 md:w-1/2 lg:w-1/3 h-64 sm:h-72 md:h-80">
+            <h2 id="countdown-number" class="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-800 animate-bounce">3
+            </h2>
+            <h2 class="mt-4 text-sm sm:text-base md:text-lg">🎉 Congratulations on Your New Pet! 🐶🐱 We're so excited
+                for you and your new furry companion!</h2>
+            <p class="text-gray-500 mt-4 text-xs sm:text-sm md:text-base">Adopting...</p>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="bg-[#131313] text-white py-10">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-14 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Column 1: Peddy Information with Logo and Social Icons -->
+            <div class="flex flex-col items-start">
+                <div class="flex items-center mb-4">
+                    <img src="images/logo.webp" alt="Peddy Logo" class="h-6 mr-2">
+                    <h3 class="text-xl font-semibold">Peddy</h3>
+                </div>
+                <p class="text-gray-400"><strong>Location:</strong> av. Washington 165, NY CA 54003</p>
+                <p class="text-gray-400"><strong>Phone:</strong> +31 85 964 47 25</p>
+                <p class="text-gray-400"><strong>Email:</strong> info@yourdomain.com</p>
+                <p class="text-gray-400"><strong>Openings hours:</strong> 9.00 AM - 5.00 PM</p>
+
+                <!-- Social Icons -->
+                <div class="flex space-x-4 mt-4">
+                    <a href="" aria-label="Facebook" class="text-gray-400 hover:text-white text-2xl">
+                        <i class="ri-facebook-circle-fill"></i>
+                    </a>
+                    <a href="" aria-label="X (Twitter)" class="text-gray-400 hover:text-white text-2xl">
+                        <i class="ri-twitter-x-line"></i>
+                    </a>
+                    <a href="" aria-label="YouTube" class="text-gray-400 hover:text-white text-2xl">
+                        <i class="ri-youtube-fill"></i>
+                    </a>
+                    <a href="" aria-label="Instagram" class="text-gray-400 hover:text-white text-2xl">
+                        <i class="ri-instagram-fill"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Column 2: Useful Links -->
+            <div>
+                <h3 class="text-xl font-semibold mb-4">Useful Links</h3>
+                <ul class="space-y-2">
+                    <li class="text-gray-400"><a href="" class="hover:text-gray-400">Home</a></li>
+                    <li class="text-gray-400"><a href="" class="hover:text-gray-400">About Us</a></li>
+                    <li class="text-gray-400"><a href="" class="hover:text-gray-400">Animals</a></li>
+                    <li class="text-gray-400"><a href="" class="hover:text-gray-400">Foundation</a></li>
+                    <li class="text-gray-400"><a href="" class="hover:text-gray-400">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Drop a Message -->
+            <div>
+                <h3 class="text-xl font-semibold mb-4">Drop a Message</h3>
+                <div class="flex flex-col">
+                    <input type="email" placeholder="Enter your email"
+                        class="w-full sm:w-3/4 p-2 mb-4 rounded-lg text-black" required>
+                    <button type="submit"
+                        class="bg-[#0E7A81] text-white px-4 py-2 rounded-lg w-full sm:w-3/4 hover:bg-[#215b5f]">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script src="scripts/main.js"></script>
+</body>
+
+</html>
